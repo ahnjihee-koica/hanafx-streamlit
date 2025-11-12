@@ -33,4 +33,9 @@ if st.button("조회 및 엑셀 다운로드"):
                 )
             st.success("✅ 완료되었습니다! 파일을 다운로드하세요.")
         except Exception as e:
-            st.error(f"❌ 오류 발생: {e}")
+           st.error(f"❌ 오류 발생: {e}")
+           if os.path.exists("error_debug.html"):
+               with open("error_debug.html", "r", encoding="utf-8", errors="ignore") as f:
+                   html_content = f.read()
+               with st.expander("🔍 서버 응답 내용 보기 (error_debug.html)"):
+                   st.code(html_content, language="html")
